@@ -1,0 +1,150 @@
+
+//=====Absolute beginning  of the pauseButton_Manager script
+
+//Beginning of added usings
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+//End of added usings
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class pauseButton_Manager : MonoBehaviour
+{//Beginning of the pauseButton_Manager class
+
+    //Beginning of in game items
+    public Button btn_Pause;//In game pause button
+    public Text text_InGameLevelNum;
+    public Text text_InGameWaveNum;
+    public Text text_InGameScore;
+    //End of in game items 
+
+        //Beginning of pause screen and its items
+        public Image pause_Screen;
+        public Button btn_Resume;
+
+            //Beginning of pause screen text
+            public Text text_Gold; 
+            public Text text_Time;
+            public Text text_Score;
+            public Text text_EnemiesDestroyed;
+            //End of pause screen text
+                
+        //End of pause screen and its items
+
+
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {//Beginning of Start function
+
+      //The beginning of enabling the pause button
+        Button pauseButton = btn_Pause.GetComponent<Button>();
+        pauseButton.onClick.AddListener(ifPauseButtonIsClickedMidGame);
+        //The end of enabling the pause button
+
+            //Pause Screen screen
+                //Image pauseScreen = pause_Screen.GetComponent<Image>();
+                pause_Screen.enabled = false;//Disabling the screen on start so the user will not see it
+                
+                //Beginning of disabling the resume button 
+                btn_Resume.interactable = false; // Uses Disabled Color And Cant Click It
+                btn_Resume.enabled = false; // Does Not Use Disabled Color And Cant Click It
+                btn_Resume.gameObject.SetActive(false); // Removes It From UI Entirely 
+                //End of disabling the resume button 
+
+                //Beginning of disabling the resume screen text
+                text_Gold.enabled = false;
+                text_Time.enabled = false;
+                text_Score.enabled = false;
+                text_EnemiesDestroyed.enabled = false;
+                //End of disabling the resume screen text
+
+
+                     //Resume button needs to be grabbed so we it can pressed
+                        //The beginning of grabbing the resume button and adding its listener
+                        Button resumeButton = btn_Resume.GetComponent<Button>();
+                        resumeButton.onClick.AddListener(toResumeGame);
+                        //The end of grabbing the resume button and adding its listener
+                
+
+
+    }//End of Start function
+
+    // Update is called once per frame
+    void Update()
+    {//Beginning of Update function
+        
+    }//End of Update function
+
+    void ifPauseButtonIsClickedMidGame()
+    {//Beginning of ifPauseButtonClicked function
+
+
+           Debug.Log("Pause button was pressed"); 
+           Time.timeScale = 0; //Actually pausing the game
+
+            //Beginning of enabling all of the pause screen elements
+            pause_Screen.enabled = true;//Blue background image
+
+               //Beginning of disabling in game items on pause button click
+               text_InGameLevelNum.enabled = false;
+               text_InGameWaveNum.enabled = false;
+               text_InGameScore.enabled = false;//Disabling the in game score
+               //End of disabling in game items on pause button click
+         
+                    //Beginning of enabling resume button
+                    btn_Resume.interactable = true; // Uses Disabled Color And Cant Click It
+                    btn_Resume.enabled = true; // Does Not Use Disabled Color And Cant Click It
+                    btn_Resume.gameObject.SetActive(true); // Removes It From UI Entirely 
+                    //End of enabling resume button
+
+                        //Beginning of enabling the pause screen text 
+                        text_Gold.enabled = true;
+                        text_Time.enabled = true;
+                        text_Score.enabled = true;
+                        text_EnemiesDestroyed.enabled = true;
+                        //End of enabling the pause screen text 
+
+            //End of enabling all of the pause screen elements
+
+    }//End of ifPauseButtonClicked function
+
+    void toResumeGame()
+    {//Beginning of toResumeGame function
+
+        Debug.Log("Resume button was pressed");
+        Time.timeScale =1;//Lets the gameplay start again but does not disable any screens
+
+            //Beginning of disabling all of the pause screen elements
+            pause_Screen.enabled = false;//Blue background image
+
+                //Beginning of disabling resume button
+                btn_Resume.interactable = false; // Uses Disabled Color And Cant Click It
+                btn_Resume.enabled = false; // Does Not Use Disabled Color And Cant Click It
+                btn_Resume.gameObject.SetActive(false); // Removes It From UI Entirely 
+                //End of disabling resume button
+                
+
+                    //Beginning of disabling the pause screen text 
+                     text_Gold.enabled = false;
+                     text_Time.enabled = false;
+                     text_Score.enabled = false;
+                     text_EnemiesDestroyed.enabled = false;
+                    //End of disabling the pause screen text
+
+                        //Beginning of enabling in game UI
+                        text_InGameLevelNum.enabled = true;
+                        text_InGameWaveNum.enabled = true;
+                        text_InGameScore.enabled = true;//Disabling the in game score
+                        //End of enabling in game UI
+
+    }//End of toResumeGame function
+
+}//End of the pauseButton_Manager class
+
+//=====Absolute end of the pauseButton_Manager script
