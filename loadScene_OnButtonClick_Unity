@@ -1,0 +1,79 @@
+//----Absolute begining of the script_LevelSelection_Manager-----------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//Beginning of new usings===========
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+//End of new usings=================
+
+public class script_LevelSelection_Manager : MonoBehaviour
+{//Beginning of script_LevelSelection_Manager class-----------
+
+
+    //Beginning of assigning the buttons
+    public Button button_Lvl1;
+    public Button button_Lvl2;
+    public Button button_Lvl3;
+    //End of assigning the buttons
+
+
+    // Start is called before the first frame update
+    void Start()
+    {//Beginning of start function
+
+        ///The beginning of enabling the level buttons
+
+            //Beginning of levels up to the 1st boss------------------------
+            Button btn_Lvl1 = button_Lvl1.GetComponent<Button>();//Level 1
+            btn_Lvl1.onClick.AddListener(level_1_WasClicked);//Level 1
+
+            Button btn_Lvl2 = button_Lvl2.GetComponent<Button>();//Level 2
+            btn_Lvl2.onClick.AddListener(level_2_WasClicked);//Level 2
+
+            Button btn_Lvl3 = button_Lvl3.GetComponent<Button>();//Level 3
+            btn_Lvl3.onClick.AddListener(level_3_WasClicked);//Level 3
+            //End of levels up to the 1st boss-------------------------------
+
+        //The end of enabling the level buttons
+        
+    }//End of start function
+   
+    // Update is called once per frame
+    void Update()
+    {//Beginning of Update function
+        
+    }//End of Update function 
+
+
+    void level_1_WasClicked()
+    {//Beginning of level_1_WasClicked function
+
+        Debug.Log("Level 1 was clicked");
+        SceneManager.LoadScene("scene_S4_Campaign_Level1");
+
+    }//End of level_1_WasClicked function
+
+    void level_2_WasClicked()
+    {//Beginning of level_2_WasClicked function
+
+        Debug.Log("Level 2 was clicked");
+        SceneManager.LoadScene("scene_S4_Campaign_Level2");
+
+    }//End of level_2_WasClicked function
+
+    void level_3_WasClicked()
+    {//Beginning of level_3_WasClicked function
+
+        Debug.Log("Level 3 was clicked");
+        SceneManager.LoadScene("scene_S4_Campaign_Level3");
+
+    }//End of level_3_WasClicked function
+
+
+
+}//End of script_LevelSelection_Manager class-----------------
+
+//----Absolute end of the script_LevelSelection_Manager-----------------
